@@ -1,8 +1,8 @@
 /* colours */
 :root{
-  --primary: #b2dfdb ;
-  --secondary: #4db6ac ;
-  --title: #00695c  ;
+  --primary: #dfb2d4 ;
+  --secondary: #b64dad ;
+  --title: #92056c  ;
 }
 
 /* layout styles */
@@ -33,7 +33,7 @@ nav .sidenav-trigger{
   grid-template-columns: 2fr 6fr 1fr;
   grid-template-areas: "image details delete";
   position: relative;
-  background: #80cbc4 ;
+  background: #6a266a ;
   align-items: center;
 }
 
@@ -100,7 +100,7 @@ form .input-field{
   grid-template-columns: 2fr 6fr 1fr;
   grid-template-areas: "image details delete";
   position: relative;
-  background: #80cbc4 ;
+  background: #cb80c3 ;
   align-items: center;
   margin-bottom: 8px;
 }

@@ -1,40 +1,96 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=430, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>PK Contacts</title>
-  <!-- materialize icons, css & js -->
+  <title>Scent Search - About</title>
+  <!-- Materialize CSS and icons -->
   <link type="text/css" href="../css/materialize.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" href="../css/styles.css" rel="stylesheet">
   <script type="text/javascript" src="../js/materialize.min.js"></script>
-  
+
+  <style>
+    /* Center the phone container on the page */
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    /* Phone container with border */
+    .phone-container {
+      width: 430px;
+      height: 932px;
+      max-width: 100vw;
+      max-height: 100vh;
+      border: 12px solid #000; /* Phone border */
+      border-radius: 50px; /* Rounded corners to simulate iPhone */
+      box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2); /* Shadow to elevate phone */
+      overflow: hidden;
+      background-color: #f3e5f5; /* Subtle light purple background */
+    }
+
+    /* Inside phone content takes up full phone container */
+    .phone-content {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navigation bar with rounded bottom corners */
+    nav {
+      height: 60px;
+      border-radius: 0 0 30px 30px;
+    }
+
+    /* Full height content section */
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+  </style>
 </head>
-<body class="grey lighten-4">
+<body>
 
-  <!-- top nav -->
-  <nav class="z-depth-0">
-    <div class="nav-wrapper container">
-      <span class="left grey-text text-darken-1">
-        <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
-      </span>
-      <a class="right" href="/">PK<span>Contacts</span></a>
+  <!-- Phone container -->
+  <div class="phone-container">
+    <div class="phone-content">
       
+      <!-- Top nav -->
+      <nav class="z-depth-0 purple lighten-3">
+        <div class="nav-wrapper container">      
+          <span class="left grey-text text-darken-1">
+            <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
+          </span>
+          <a class="right white-text" href="/">Scent<span>Search</span></a>
+        </div>
+      </nav>
+
+      <!-- Side nav -->
+      <ul id="side-menu" class="sidenav side-menu">
+        <li><a class="subheader">Scent Search</a></li>
+        <li><a href="/" class="waves-effect">Home</a></li>
+        <li><a href="about.html" class="waves-effect">Bookmarks</a></li>    
+      </ul>
+
+      <!-- About content -->
+      <div class="content">
+        <h5 class="center">About Scent Search</h5>
+        <p>Scent Search is designed to help you find the best fragrances at the best prices. Use the app to search for your favorite fragrances, bookmark them, and explore new scents.</p>
+        <p>This mobile app format ensures that you have a seamless experience, just like using your favorite apps on your iPhone. Enjoy the convenience and elegance of searching for perfumes on the go!</p>
+      </div>
+
     </div>
-  </nav>
-
-  <!-- side nav -->
-  <ul id="side-menu" class="sidenav side-menu">
-    <li><a class="subheader">PKCONTACT</a></li>
-    <li><a href="/" class="waves-effect">Home</a></li>
-    <li><a href="about.html" class="waves-effect">About</a></li>    
-  </ul>
-
-  <!-- content -->
-  <div class="container grey-text">
-    <h5 class="center">About PK Contacts</h5>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus, porro voluptatum illum veniam eaque sunt sit labore provident eligendi! Voluptate amet suscipit inventore unde maxime atque impedit officia nobis laboriosam!</p>   
   </div>
 
   <script src="../js/common.js"></script>
