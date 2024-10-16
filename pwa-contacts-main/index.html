@@ -1,57 +1,74 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>PK Contacts</title>
-  <!-- materialize icons, css & js -->
+  <title>Scent Search</title>
+  <!-- Materialize CSS and icons -->
   <link type="text/css" href="css/materialize.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" href="css/styles.css" rel="stylesheet">
   <script type="text/javascript" src="js/materialize.min.js"></script>
-  
 </head>
-<body class="teal lighten-5">
+<body class="purple lighten-5">
 
   <!-- top nav -->
-  <nav class="z-depth-0">
+  <nav class="z-depth-0 purple lighten-3">
     <div class="nav-wrapper container">      
       <span class="left grey-text text-darken-1">
         <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
       </span>
-      <a class="right" href="/">PK<span>Contacts</span></a>
+      <a class="right" href="/">Scent<span>Search</span></a>
     </div>
   </nav>
-
+  
   <!-- side nav -->
   <ul id="side-menu" class="sidenav side-menu">
-    <li><a class="subheader">PK Contacts</a></li>
+    <li><a class="subheader">Scent Search</a></li>
     <li><a href="/" class="waves-effect">Home</a></li>
-    <li><a href="pages/about.html" class="waves-effect">About</a></li>    
+    <li><a href="pages/about.html" class="waves-effect">Bookmarks</a></li>    
   </ul>
 
-  <!-- contacts -->
+  <!-- Search Bar -->
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <div class="input-field">
+          <input id="fragrance-search" type="text" placeholder="Search for fragrances">
+          <label for="fragrance-search"><i class="material-icons">search</i> Search Fragrances</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contacts/Fragrances (to be populated dynamically later) -->
   <div class="contacts container grey-text text-darken-1">
-    <!-- <div class="card-panel contact teal lighten-4 row">
-      <img src="img/pkcontacts.png" alt="contact thumb">
+    <!-- Example contact (will be fragrance later) -->
+    <div class="grey-text text-darken-1 pk-contact modal-trigger" data-target="contact-modal-1">
+      <div class="contact-image">
+        <img src="img/contact1.png" alt="contact thumb">
+      </div>
       <div class="contact-details">
-        <div class="contact-title">John Doe</div>
-        <div class="contact-numbers">+130902092309</div>
-      </div>      
-      <div class="contact-options">        
-        <i class="material-icons call_out">call_outline</i>                       
+        <div class="contact-title">Fragrance 1</div>
+        <div class="contact-numbers">Price: $100</div>
+      </div>
+      <div class="contact-options">
+        <i class="material-icons">call</i>              
         <i class="material-icons">delete_outline</i>              
       </div>
-    </div>     -->
-    <div class="grey-text text-darken-1 pk-contact">
+    </div>
+
+    <!-- Contact 2 -->
+    <div class="grey-text text-darken-1 pk-contact modal-trigger" data-target="contact-modal-2">
       <div class="contact-image">
-        <img src="img/pkcontacts.png" alt="contact thumb">
+        <img src="img/contact2.png" alt="contact thumb">
       </div>
       <div class="contact-details">
-        <div class="contact-title">John Doe</div>
-        <div class="contact-numbers">+130902092309</div>
+        <div class="contact-title">Fragrance 2</div>
+        <div class="contact-numbers">Price: $150</div>
       </div>
-      <div class="contact-options">        
+      <div class="contact-options">
         <i class="material-icons">call</i>              
         <i class="material-icons">delete_outline</i>              
       </div>
@@ -64,25 +81,59 @@
     </a>
   </div>
 
+  <!-- Individual Pop-up Pages (Blank for now) -->
+  <!-- Fragrance 1 -->
+  <div id="contact-modal-1" class="modal purple lighten-5">
+    <div class="modal-content">
+      <h5>Fragrance 1 Details</h5>
+      <!-- This will be blank for now, you can populate details here later -->
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
+
+  <!-- Fragrance 2 -->
+  <div id="contact-modal-2" class="modal purple lighten-5">
+    <div class="modal-content">
+      <h5>Fragrance 2 Details</h5>
+      <!-- This will be blank for now, you can populate details here later -->
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
+
   <!-- add contact side nav -->
   <div id="side-form" class="sidenav side-form">
     <form class="add-contact container section">
-      <h6 >New Contact</h6>
+      <h6>New Contact</h6>
       <div class="divider"></div>
       <div class="input-field">
-        <input placeholder="e.g. John Doe" id="title" type="text" class="validate">
-        <label for="title">Contact Name</label>
+        <input placeholder="e.g. Fragrance Name" id="title" type="text" class="validate">
+        <label for="title">Fragrance Name</label>
       </div>
       <div class="input-field">
-        <input placeholder="e.g. +198392323" id="numbers" type="text" class="validate">
-        <label for="numbers">Number</label>
+        <input placeholder="e.g. Price" id="numbers" type="text" class="validate">
+        <label for="numbers">Price</label>
       </div>
       <div class="input-field center">
-        <button class="btn-small">Add Contact</button>
+        <button class="btn-small">Add Fragrance</button>
       </div>
     </form>
   </div>
 
   <script src="js/common.js"></script>
+
+  <!-- Initialize Materialize components -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.sidenav');
+      M.Sidenav.init(elems);
+
+      var modalElems = document.querySelectorAll('.modal');
+      M.Modal.init(modalElems);
+    });
+  </script>
 </body>
 </html>
