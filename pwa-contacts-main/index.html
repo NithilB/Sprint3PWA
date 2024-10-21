@@ -85,10 +85,32 @@
     border-radius: 3px;
     cursor: pointer;
   }
+  
 
   .remove-bookmark-btn:hover {
     background-color: #c62828;
   }
+
+  @media only screen and (max-width: 600px) {
+  .side-panel {
+    width: 100%; /* Makes it full width */
+    height: 50%; /* Adjusts height for better mobile view */
+    bottom: 0;
+    top: unset; /* Make it slide from bottom */
+    right: 0;
+    position: fixed;
+    z-index: 9999;
+  }
+
+  /* Adjust modal details on mobile */
+  .modal-content {
+    padding: 20px;
+  }
+
+  .modal-footer {
+    text-align: center;
+  }
+}
 
   </style>
 </head>
@@ -100,6 +122,9 @@
       <span class="left grey-text text-darken-1">Scent Search</span>
     </div>
   </nav>
+
+  <!-- <button id="toggle-bookmarked" class="btn">Toggle Bookmarks</button> -->
+
 
   <!-- Fragrances/Contacts Section -->
   <div class="container section">
@@ -497,6 +522,16 @@
 
     displayBookmarkedFragrances(); // Display bookmarks on page load
   });
+
+  document.getElementById('toggle-bookmarked').addEventListener('click', function() {
+  const panel = document.getElementById('bookmarked-panel');
+  if (panel.style.display === 'block' || panel.style.display === '') {
+    panel.style.display = 'none'; // Collapse panel
+  } else {
+    panel.style.display = 'block'; // Show panel
+  }
+});
+
 
   </script>
 
