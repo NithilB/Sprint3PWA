@@ -10,130 +10,374 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" href="css/styles.css" rel="stylesheet">
   <script type="text/javascript" src="js/materialize.min.js"></script>
+  <style>
+    /* Add more space between list items */
+    #fragrance-details li, #spicebomb-details li, #bleu-de-chanel-details li, #chanel-no-5-details li {
+      list-style: none;
+      padding: 20px;
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 20px; /* Increased space between items */
+    }
+
+
+    .buy-now-btn {
+      background-color: #26a69a;
+      color: white;
+      padding: 10px 20px;
+      text-transform: uppercase;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+      display: inline-block; /* Ensures the button does not overlap */
+    }
+
+.buy-now-btn:hover {
+  background-color: #00796b;
+}
+
+  </style>
 </head>
 <body class="purple lighten-5">
 
-  <!-- top nav -->
+  <!-- Top nav -->
   <nav class="z-depth-0 purple lighten-3">
     <div class="nav-wrapper container">      
-      <span class="left grey-text text-darken-1">
-        <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
-      </span>
-      <a class="right" href="/">Scent<span>Search</span></a>
+      <span class="left grey-text text-darken-1">Scent Search</span>
     </div>
   </nav>
-  
-  <!-- side nav -->
-  <ul id="side-menu" class="sidenav side-menu">
-    <li><a class="subheader">Scent Search</a></li>
-    <li><a href="/" class="waves-effect">Home</a></li>
-    <li><a href="pages/about.html" class="waves-effect">Bookmarks</a></li>    
-  </ul>
 
-  <!-- Search Bar -->
-  <div class="container">
-    <div class="row">
-      <div class="col s12">
-        <div class="input-field">
-          <input id="fragrance-search" type="text" placeholder="Search for fragrances">
-          <label for="fragrance-search"><i class="material-icons">search</i> Search Fragrances</label>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- Fragrances/Contacts Section -->
+  <div class="container section">
+    <h5>Fragrances</h5>
 
-  <!-- Contacts/Fragrances (to be populated dynamically later) -->
-  <div class="contacts container grey-text text-darken-1">
-    <!-- Example contact (will be fragrance later) -->
-    <div class="grey-text text-darken-1 pk-contact modal-trigger" data-target="contact-modal-1">
-      <div class="contact-image">
-        <img src="img/contact1.png" alt="contact thumb">
-      </div>
+    <!-- Dior Sauvage -->
+    <div class="grey-text text-darken-1 pk-contact modal-trigger" data-target="fragrance-modal" onclick="fetchFragranceDetails('Dior_Sauvage')">
       <div class="contact-details">
-        <div class="contact-title">Fragrance 1</div>
-        <div class="contact-numbers">Price: $100</div>
-      </div>
-      <div class="contact-options">
-        <i class="material-icons">call</i>              
-        <i class="material-icons">delete_outline</i>              
+        <div class="contact-title">Dior Sauvage</div>
+        <div class="contact-numbers">Click for details</div>
       </div>
     </div>
 
-    <!-- Contact 2 -->
-    <div class="grey-text text-darken-1 pk-contact modal-trigger" data-target="contact-modal-2">
-      <div class="contact-image">
-        <img src="img/contact2.png" alt="contact thumb">
+    <!-- Dior Sauvage Modal -->
+    <div id="fragrance-modal" class="modal purple lighten-5">
+      <div class="modal-content">
+        <h5>Dior Sauvage Details</h5>
+        <ul id="fragrance-details"></ul>
       </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+      </div>
+    </div>
+
+    <!-- Viktor & Rolf Spicebomb Night Vision -->
+    <div class="grey-text text-darken-1 pk-contact modal-trigger" data-target="spicebomb-modal" onclick="fetchFragranceDetails('Spicebomb_Night_Vision')">
       <div class="contact-details">
-        <div class="contact-title">Fragrance 2</div>
-        <div class="contact-numbers">Price: $150</div>
-      </div>
-      <div class="contact-options">
-        <i class="material-icons">call</i>              
-        <i class="material-icons">delete_outline</i>              
+        <div class="contact-title">Viktor & Rolf Spicebomb Night Vision</div>
+        <div class="contact-numbers">Click for details</div>
       </div>
     </div>
-  </div>
 
-  <div class="center">
-    <a class="btn-floating btn-small btn-large add-btn sidenav-trigger" data-target="side-form">
-      <i class="material-icons">add</i>
-    </a>
-  </div>
-
-  <!-- Individual Pop-up Pages (Blank for now) -->
-  <!-- Fragrance 1 -->
-  <div id="contact-modal-1" class="modal purple lighten-5">
-    <div class="modal-content">
-      <h5>Fragrance 1 Details</h5>
-      <!-- This will be blank for now, you can populate details here later -->
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-    </div>
-  </div>
-
-  <!-- Fragrance 2 -->
-  <div id="contact-modal-2" class="modal purple lighten-5">
-    <div class="modal-content">
-      <h5>Fragrance 2 Details</h5>
-      <!-- This will be blank for now, you can populate details here later -->
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-    </div>
-  </div>
-
-  <!-- add contact side nav -->
-  <div id="side-form" class="sidenav side-form">
-    <form class="add-contact container section">
-      <h6>New Contact</h6>
-      <div class="divider"></div>
-      <div class="input-field">
-        <input placeholder="e.g. Fragrance Name" id="title" type="text" class="validate">
-        <label for="title">Fragrance Name</label>
+    <!-- Spicebomb Night Vision Modal -->
+    <div id="spicebomb-modal" class="modal purple lighten-5">
+      <div class="modal-content">
+        <h5>Spicebomb Night Vision Details</h5>
+        <ul id="spicebomb-details"></ul>
       </div>
-      <div class="input-field">
-        <input placeholder="e.g. Price" id="numbers" type="text" class="validate">
-        <label for="numbers">Price</label>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
       </div>
-      <div class="input-field center">
-        <button class="btn-small">Add Fragrance</button>
+    </div>
+
+    <!-- Bleu de Chanel -->
+    <div class="grey-text text-darken-1 pk-contact modal-trigger" data-target="bleu-de-chanel-modal" onclick="fetchFragranceDetails('Bleu_De_Chanel')">
+      <div class="contact-details">
+        <div class="contact-title">Bleu De Chanel</div>
+        <div class="contact-numbers">Click for details</div>
       </div>
-    </form>
+    </div>
+
+    <!-- Bleu_de_Chanel Modal -->
+    <div id="bleu-de-chanel-modal" class="modal purple lighten-5">
+      <div class="modal-content">
+        <h5>Bleu De Chanel Details</h5>
+        <ul id="bleu-de-chanel-details"></ul>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+      </div>
+    </div>
+
+    <!-- Chanel No 5 -->
+    <div class="grey-text text-darken-1 pk-contact modal-trigger" data-target="chanel-no-5-modal" onclick="fetchFragranceDetails('Chanel_No_5')">
+      <div class="contact-details">
+        <div class="contact-title">Chanel No 5</div>
+        <div class="contact-numbers">Click for details</div>
+      </div>
+    </div>
+
+    <!-- Bleu_de_Chanel Modal -->
+    <div id="chanel-no-5-modal" class="modal purple lighten-5">
+      <div class="modal-content">
+        <h5>Chanel No 5 Details</h5>
+        <ul id="chanel-no-5-details"></ul>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+      </div>
+    </div>
+
   </div>
 
-  <script src="js/common.js"></script>
-
-  <!-- Initialize Materialize components -->
+  <!-- Scripts -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.sidenav');
-      M.Sidenav.init(elems);
+    // Shortened JSON data for Dior Sauvage and Spicebomb Night Vision
+    const fragranceData = {
+      "Dior_Sauvage": [
+        {
+          "store_name": "Amazon",
+          "site_link": "https://www.amazon.com/s?k=Sauvage&crid=28J6Y0MEHKMUS&sprefix=sauvage+%2Caps%2C161&ref=nb_sb_noss_2",
+          "product_name": "Dior Sauvage Eau de Toilette Spray for Men",
+          "bottle_size": "3.4 oz",
+          "price": "$124.16"
+        },{
+        "store_name": "FragranceNet.com",
+        "site_link": "https://www.fragrancenet.com/cologne/christian-dior/dior-sauvage/edt#283046",
+        "product_name": "Dior Sauvage Eau De Toilette Spray Refillable",
+        "bottle_size": "3.4 oz",
+        "price": "$129.99"
+      },
+      {
+        "store_name": "Perfumania",
+        "site_link": "https://perfumania.com/search?q=Sauvage",
+        "product_name": "Sauvage Eau de Toilette Spray for Men by Christian Dior",
+        "bottle_size": "3.4 oz",
+        "price": "$91.95"
+      },
+      {
+        "store_name": "Sephora",
+        "site_link": "https://www.sephora.com/search?keyword=Sauvage",
+        "product_name": "DIOR Sauvage Eau de Toilette",
+        "bottle_size": "3.4 oz",
+        "price": "$112.00"
+      },
+      {
+        "store_name": "FragranceX",
+        "site_link": "https://www.fragrancex.com/search/search_results?stext=Sauvage+",
+        "product_name": "Sauvage by Christian Dior",
+        "bottle_size": "3.4 oz",
+        "price": "$123.55"
+      },
+      {
+        "store_name": "ThePerfumeSpot",
+        "site_link": "https://theperfumespot.com/search-magic.html?query=Sauvage+&pu=null",
+        "product_name": "Sauvage by Christian Dior Eau De Toilette Spray",
+        "bottle_size": "6.8 oz",
+        "price": "$178.35"
+      },
+      {
+        "store_name": "Walmart",
+        "site_link": "https://www.walmart.com/search?q=Sauvage+",
+        "product_name": "Dior Sauvage Eau de Toilette, Cologne for Men",
+        "bottle_size": "3.4 oz",
+        "price": "$66.99"
+      }
+      ],
+      "Spicebomb_Night_Vision": [
+        {
+          "store_name": "FragranceNet.com",
+          "site_link": "https://www.fragrancenet.com/cologne/viktor-and-rolf/spicebomb-night-vision/eau-de-parfum?mv_pc=gawus_surf_417218&utm_campaign=surf&utm_medium=organic&utm_source=google_us#417218",
+          "product_name": "Spicebomb Night Vision Eau De Parfum Spray",
+          "bottle_size": "1.7 oz",
+          "price": "$59.84"
+        },
+      {
+        "store_name": "Ulta",
+        "site_link": "https://www.ulta.com/p/spicebomb-night-vision-eau-de-parfum-pimprod2031497?sku=2595264&cmpid=PS_Non!google!Product_Listing_Ads&utm_source=google&utm_medium=paidsearch&CAWELAID=330000200002859967",
+        "product_name": "Viktor&Rolf Spicebomb Night Vision Eau de Parfum",
+        "bottle_size": "1.7 oz",
+        "price": "$140.00"
+      },
+      {
+        "store_name": "Macy's",
+        "site_link": "https://www.macys.com/shop/product/spicebomb-night-vision-eau-de-parfum-spray-3.04-oz.?ID=11325623&pla_country=US&CAGPSPN=pla",
+        "product_name": "Viktor & Rolf Spicebomb Night Vision Eau de Parfum Spray",
+        "bottle_size": "3.04 oz",
+        "price": "$140.00"
+      },
+      {
+        "store_name": "Cosmetic America",
+        "site_link": "https://www.cosmeticamerica.com/product-p/lmsbnv17ps.htm",
+        "product_name": "Spicebomb Night Vision by Viktor & Rolf Eau De Parfum Spray",
+        "bottle_size": "1.7 oz",
+        "price": "$56.95"
+      },
+      {
+        "store_name": "The Perfume Shop USA",
+        "site_link": "https://theperfumeshopusa.com/products/spicebomb-night-vision-by-viktor-rolf-for-men?variant=48150068166969&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+        "product_name": "Spicebomb Night Vision by Viktor & Rolf For Men",
+        "bottle_size": "3 oz",
+        "price": "$120.99"
+      },
+      {
+        "store_name": "Walmart",
+        "site_link": "https://www.walmart.com/ip/SPICEBOMB-NIGHT-VISION-by-Viktor-Rolf-EAU-DE-PARFUM-SPRAY-3-OZ-Viktor-Rolf-SPICEBOMB-NIGHT-VISION-MEN/5170893718?wmlspartner=wlpa&selectedSellerId=101535711",
+        "product_name": "SPICEBOMB NIGHT VISION by Viktor & Rolf Eau De Parfum Spray",
+        "bottle_size": "3 oz",
+        "price": "$157.19"
+      },
+      {
+        "store_name": "Editorialist",
+        "site_link": "https://editorialist.com/p/viktor-rolf-spicebomb-night-vision-eau-de-parfum-spray/?pla=true&utm_source=google&utm_medium=organic&utm_campaign=organicshopping",
+        "product_name": "Viktor & Rolf Spicebomb Night Vision Eau De Parfum Spray",
+        "bottle_size": "N/A",
+        "price": "$140.00"
+      }
+      ],
+      "Bleu_De_Chanel": [
+        {
+            "store_name": "Walmart",
+            "site_link": "https://www.walmart.com/ip/120-Value-Chanel-Bleu-De-Chanel-Eau-De-Parfum-Spray-Cologne-for-Men-1-7-Oz/191862407?wmlspartner=wlpa&selectedSellerId=101085786",
+            "product_name": "Chanel Bleu De Chanel Eau De Parfum Spray",
+            "bottle_size": "1.7 oz",
+            "price": "$74.98"
+        },
+        {
+            "store_name": "Macy's",
+            "site_link": "https://www.macys.com/shop/product/chanel-bleu-de-chanel-parfum-fragrance-collection?CAGPSPN=pla&pla_country=US&ID=5736015",
+            "product_name": "CHANEL BLEU DE CHANEL Parfum Spray",
+            "bottle_size": "1.7 oz",
+            "price": "$160.00"
+        },
+        {
+            "store_name": "Sephora",
+            "site_link": "https://www.sephora.com/product/bleu-de-chanel-parfum-P432089?country_switch=us&lang=en&skuId=2065423",
+            "product_name": "CHANEL BLEU DE CHANEL Parfum",
+            "bottle_size": "1.7 oz",
+            "price": "$160.00"
+        },
+        {
+            "store_name": "Ulta",
+            "site_link": "https://www.ulta.com/p/bleu-de-chanel-parfum-spray-pimprod2015976?sku=2527085&cmpid=PS_Non!google!Product_Listing_Ads&utm_source=google&utm_medium=paidsearch&CAWELAID=330000200002224548",
+            "product_name": "BLEU DE CHANEL Parfum Spray",
+            "bottle_size": "1.7 oz",
+            "price": "$160.00"
+        },
+        {
+            "store_name": "Dillard's",
+            "site_link": "https://www.dillards.com/p/chanel-bleu-de-chanel-3.4-oz.-eau-de-parfum-twist-and-spray-set/515496227?sku=1116568&googleShop=Y",
+            "product_name": "CHANEL BLEU DE CHANEL 3.4 oz Eau de Parfum Twist and Spray Set",
+            "bottle_size": "3.4 oz",
+            "price": "$215.00"
+        },
+        {
+            "store_name": "Harrods",
+            "site_link": "https://www.harrods.com/en-us/shopping/bleu-de-chanel-parfum-150ml-15189574",
+            "product_name": "CHANEL BLEU DE CHANEL Parfum",
+            "bottle_size": "150 ml",
+            "price": "$196.00"
+        },
+        {
+            "store_name": "eBay",
+            "site_link": "https://www.ebay.com/itm/285686150364?chn=ps",
+            "product_name": "Bleu De Chanel Parfum Pour Homme",
+            "bottle_size": "3.4 oz",
+            "price": "$150.00"
+        }
+    ],
+    "Chanel_No_5": [
+        {
+            "store_name": "Amazon",
+            "site_link": "https://www.amazon.com/Chanel-Women-Parfum-Spray-Ounce/dp/B000VOJ9BG?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&psc=1&smid=A6ALCNINKXX8S",
+            "product_name": "No. 5 by Chanel for Women, Eau De Parfum Spray",
+            "bottle_size": "3.4 oz",
+            "price": "$123.49"
+        },
+        {
+            "store_name": "Saks Fifth Avenue",
+            "site_link": "https://www.saksfifthavenue.com/product/CHANEL-Eau-de-Parfum-Spray-0429156469331.html?dwvar_0429156469331_size=1.2+oz&dwvar_0429156469331_color=NO+COLOR&site_refer=NPLA_GGL_Shopping&country=US&currency=USD",
+            "product_name": "CHANEL N째5 Eau de Parfum Spray",
+            "bottle_size": "1.2 oz",
+            "price": "$108.00"
+        },
+        {
+            "store_name": "Walmart",
+            "site_link": "https://www.walmart.com/ip/Chanel-No-5-Eau-De-Parfum-Refillable-Spray-2-Ounces/189610638?wmlspartner=wlpa&selectedSellerId=101410470",
+            "product_name": "Chanel No 5 Eau De Parfum Refillable Spray",
+            "bottle_size": "2 oz",
+            "price": "$156.95"
+        },
+        {
+            "store_name": "Macy's",
+            "site_link": "https://www.macys.com/shop/product/chanel-n5-eau-de-toilette-spray-1.7-oz?ID=104555&pla_country=US&CAGPSPN=pla",
+            "product_name": "CHANEL N째5 Eau de Toilette Spray",
+            "bottle_size": "1.7 oz",
+            "price": "$113.00"
+        },
+        {
+            "store_name": "eBay",
+            "site_link": "https://www.ebay.com/itm/363223115036?chn=ps",
+            "product_name": "CHANEL NO.5 by Chanel Parfum Refillable Spray",
+            "bottle_size": "0.25 oz",
+            "price": "$139.99"
+        },
+        {
+            "store_name": "Dillard's",
+            "site_link": "https://www.dillards.com/p/chanel-n5-parfum-purse-spray-refillable/505038628?sku=1938118&googleShop=Y",
+            "product_name": "CHANEL N째5 Parfum Purse Spray Refillable",
+            "bottle_size": "N/A",
+            "price": "$115.00 - $150.00"
+        },
+        {
+            "store_name": "Sephora",
+            "site_link": "https://www.sephora.com/product/n5-l-eau-P412038?country_switch=us&lang=en&skuId=1837624",
+            "product_name": "CHANEL N째5 L'EAU Eau de Toilette",
+            "bottle_size": "1.7 oz",
+            "price": "$138.00"
+        }
+      ]
+    };
 
-      var modalElems = document.querySelectorAll('.modal');
-      M.Modal.init(modalElems);
+    function fetchFragranceDetails(fragranceName) {
+      const details = fragranceData[fragranceName];
+      let detailsHtml = '';
+
+      if (fragranceName === 'Dior_Sauvage') {
+        detailsHtml = details.map(detail => `
+          <li>${detail.store_name}: ${detail.price} (${detail.bottle_size}) 
+          <a href="${detail.site_link}" target="_blank" class="buy-now-btn">Buy Now</a></li>
+        `).join('');
+        document.getElementById('fragrance-details').innerHTML = detailsHtml;
+        M.Modal.getInstance(document.getElementById('fragrance-modal')).open();
+      } else if (fragranceName === 'Spicebomb_Night_Vision') {
+        detailsHtml = details.map(detail => `
+          <li>${detail.store_name}: ${detail.price} (${detail.bottle_size}) 
+          <a href="${detail.site_link}" target="_blank" class="buy-now-btn">Buy Now</a></li>
+        `).join('');
+        document.getElementById('spicebomb-details').innerHTML = detailsHtml;
+        M.Modal.getInstance(document.getElementById('spicebomb-modal')).open();
+      } else if (fragranceName === 'Bleu_De_Chanel') {
+        detailsHtml = details.map(detail => `
+          <li>${detail.store_name}: ${detail.price} (${detail.bottle_size}) 
+          <a href="${detail.site_link}" target="_blank" class="buy-now-btn">Buy Now</a></li>
+        `).join('');
+        document.getElementById('bleu-de-chanel-details').innerHTML = detailsHtml;
+        M.Modal.getInstance(document.getElementById('bleu-de-chanel-modal')).open();
+      } else if (fragranceName === 'Chanel_No_5') {
+        detailsHtml = details.map(detail => `
+          <li>${detail.store_name}: ${detail.price} (${detail.bottle_size}) 
+          <a href="${detail.site_link}" target="_blank" class="buy-now-btn">Buy Now</a></li>
+        `).join('');
+        document.getElementById('chanel-no-5-details').innerHTML = detailsHtml;
+        M.Modal.getInstance(document.getElementById('chanel-no-5-modal')).open();
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const elems = document.querySelectorAll('.modal');
+      M.Modal.init(elems);
     });
   </script>
+
 </body>
 </html>
