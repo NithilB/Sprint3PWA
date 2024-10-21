@@ -36,6 +36,60 @@
   background-color: #00796b;
 }
 
+.bookmark-btn {
+    background-color: #26a69a;
+    color: black;
+    padding: 8px 12px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 5px;
+    display: inline-block;
+  }
+
+  .bookmark-btn:hover {
+    background-color: #00796b;
+  }
+
+  /* Side Panel Styles */
+  .side-panel {
+    position: fixed;
+    top: 60px; /* Adjust based on your nav height */
+    right: 0;
+    width: 250px;
+    height: calc(100% - 60px); /* Adjust based on your nav height */
+    background-color: #fff;
+    padding: 10px;
+    overflow-y: auto;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  }
+
+  #bookmarked-fragrance-list {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  #bookmarked-fragrance-list li {
+    margin: 10px 0;
+    font-weight: bold;
+  }
+
+  /* Optional: Remove Button Styles */
+  .remove-bookmark-btn {
+    background-color: #e53935;
+    color: white;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .remove-bookmark-btn:hover {
+    background-color: #c62828;
+  }
+
   </style>
 </head>
 <body class="purple lighten-5">
@@ -56,6 +110,7 @@
       <div class="contact-details">
         <div class="contact-title">Dior Sauvage</div>
         <div class="contact-numbers">Click for details</div>
+        <a href="#!" class="bookmark-btn" onclick="bookmarkFragrance('Dior_Sauvage')">Bookmark</a>
       </div>
     </div>
 
@@ -75,6 +130,7 @@
       <div class="contact-details">
         <div class="contact-title">Viktor & Rolf Spicebomb Night Vision</div>
         <div class="contact-numbers">Click for details</div>
+        <a href="#!" class="bookmark-btn" onclick="bookmarkFragrance('Spicebomb_Night_Vision')">Bookmark</a>
       </div>
     </div>
 
@@ -94,6 +150,7 @@
       <div class="contact-details">
         <div class="contact-title">Bleu De Chanel</div>
         <div class="contact-numbers">Click for details</div>
+        <a href="#!" class="bookmark-btn" onclick="bookmarkFragrance('Bleu_De_Chanel')">Bookmark</a>
       </div>
     </div>
 
@@ -113,6 +170,7 @@
       <div class="contact-details">
         <div class="contact-title">Chanel No 5</div>
         <div class="contact-numbers">Click for details</div>
+        <a href="#!" class="bookmark-btn" onclick="bookmarkFragrance('Chanel_No_5')">Bookmark</a>
       </div>
     </div>
 
@@ -377,7 +435,77 @@
       const elems = document.querySelectorAll('.modal');
       M.Modal.init(elems);
     });
+
+
+
+    let bookmarkedFragrances = [];
+
+  // Check if there are existing bookmarks in local storage
+  if (localStorage.getItem('bookmarkedFragrances')) {
+    bookmarkedFragrances = JSON.parse(localStorage.getItem('bookmarkedFragrances'));
+    displayBookmarkedFragrances(); // Display them on page load
+  }
+
+  // Bookmark a fragrance
+  function bookmarkFragrance(fragranceName) {
+    if (!bookmarkedFragrances.includes(fragranceName)) {
+      bookmarkedFragrances.push(fragranceName);
+      localStorage.setItem('bookmarkedFragrances', JSON.stringify(bookmarkedFragrances));
+      displayBookmarkedFragrances();
+    }
+  }
+
+  // Display bookmarked fragrances in the side panel
+  function displayBookmarkedFragrances() {
+  const list = document.getElementById('bookmarked-fragrance-list');
+  list.innerHTML = ''; // Clear existing items
+
+  bookmarkedFragrances.forEach(fragrance => {
+    const li = document.createElement('li');
+    li.textContent = fragrance.replace(/_/g, ' '); // Replace underscores with spaces
+
+    // Add click event to open the modal
+    li.addEventListener('click', function() {
+      fetchFragranceDetails(fragrance); // Open the respective modal
+    });
+
+    // Add Remove button
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = 'Remove';
+    removeBtn.className = 'remove-bookmark-btn';
+    removeBtn.onclick = function() {
+      unbookmarkFragrance(fragrance);
+    };
+
+    li.appendChild(removeBtn);
+    list.appendChild(li);
+  });
+}
+
+
+  // Unbookmark a fragrance
+  function unbookmarkFragrance(fragranceName) {
+    bookmarkedFragrances = bookmarkedFragrances.filter(frag => frag !== fragranceName);
+    localStorage.setItem('bookmarkedFragrances', JSON.stringify(bookmarkedFragrances));
+    displayBookmarkedFragrances();
+  }
+
+  // Ensure bookmarks are displayed on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    const elems = document.querySelectorAll('.modal');
+    M.Modal.init(elems);
+
+    displayBookmarkedFragrances(); // Display bookmarks on page load
+  });
+
   </script>
 
 </body>
+
+<!-- Bookmarked Fragrances Side Panel -->
+<div id="bookmarked-panel" class="side-panel">
+  <h5>Bookmarked Fragrances</h5>
+  <ul id="bookmarked-fragrance-list"></ul>
+</div>
+
 </html>
